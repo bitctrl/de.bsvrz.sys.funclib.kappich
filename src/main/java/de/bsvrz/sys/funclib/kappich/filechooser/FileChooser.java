@@ -1,5 +1,5 @@
 /*
- * Copyright 2012 by Kappich Systemberatung Aachen
+ * Copyright 2016 by Kappich Systemberatung Aachen
  * 
  * This file is part of de.bsvrz.sys.funclib.kappich.
  * 
@@ -24,26 +24,36 @@
  * mail: <info@kappich.de>
  */
 
-package de.bsvrz.sys.funclib.kappich.annotations;
+package de.bsvrz.sys.funclib.kappich.filechooser;
 
-import java.lang.annotation.Documented;
-import java.lang.annotation.Retention;
-import java.lang.annotation.RetentionPolicy;
-import java.lang.annotation.Target;
-
-import static java.lang.annotation.ElementType.*;
+import javax.swing.filechooser.FileFilter;
+import java.io.File;
 
 /**
- * Zeigt an, dass eine Funktion, Variable oder Feld den Wert <code>null</code> enthalten bzw. (unerwartet) zurückgeben darf.
- * Lässt sich in den IntelliJ-Idea-Inspections unter @Nullable/@NotNull einrichten um entsprechende Warnungen über mögliche
- * NullPointerExceptions zu erhalten. Dient außerdem der Code-Dokumentation.
- *
  * @author Kappich Systemberatung
  * @version $Revision$
  */
-@Retention(RetentionPolicy.CLASS)
-@Documented
-@Target(value={FIELD, LOCAL_VARIABLE, PARAMETER, METHOD})
-public @interface Nullable{
+public interface FileChooser {
 
+	void setCurrentDirectory(File file);
+
+	void resetChoosableFileFilters();
+
+	void setMultiSelectionEnabled(boolean b);
+
+	void setFileSelectionMode(int fileSelectionMode);
+
+	void addChoosableFileFilter(FileFilter fileFilter);
+
+	void setFileFilter(FileFilter fileFilter);
+
+	void setDialogTitle(String dialogTitle);
+
+	File[] getSelectedFiles();
+
+	File getSelectedFile();
+
+	int showOpenDialog();
+
+	int showSaveDialog();
 }

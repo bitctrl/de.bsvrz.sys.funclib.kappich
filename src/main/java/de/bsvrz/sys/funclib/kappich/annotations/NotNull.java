@@ -46,7 +46,7 @@ import static java.lang.annotation.ElementType.*;
  */
 @Retention(RetentionPolicy.CLASS)
 @Documented
-@Target(value={FIELD, LOCAL_VARIABLE, PARAMETER, METHOD, TYPE_USE})
+@Target(value={FIELD, LOCAL_VARIABLE, PARAMETER, METHOD})
 public @interface NotNull {
 
 }
